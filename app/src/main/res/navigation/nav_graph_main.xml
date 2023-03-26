@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.github.ui.fragments.login.LoginFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_enterPriseFragment"
+            app:destination="@id/enterPriseFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterPriseFragment"
+        android:name="com.example.github.ui.fragments.enterprise.EnterPriseFragment"
+        android:label="EnterPriseFragment"
+        tools:layout="@layout/fragment_enterprise"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home_main"
+        android:name="com.example.github.ui.fragments.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_allRepositoriesFragment"
+            app:destination="@id/allRepositoriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allRepositoriesInProfileFragment"
+            app:destination="@id/allRepositoriesInProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="com.example.github.ui.fragments.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/nav_graph_main" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph_main" />
+    </fragment>
+    <fragment
+        android:id="@+id/allRepositoriesFragment"
+        tools:layout="@layout/fragment_repositories"
+        android:name="com.example.github.ui.fragments.allRepositories.AllRepositoriesFragment"
+        android:label="AllRepositoriesFragment" />
+    <fragment
+        android:id="@+id/allRepositoriesInProfileFragment"
+        tools:layout="@layout/fragment_repositories_in_profile"
+        android:name="com.example.github.ui.fragments.allRepositories.AllRepositoriesInProfileFragment"
+        android:label="AllRepositoriesInProfileFragment" />
+    <fragment
+        android:id="@+id/searchByUsernameFragment"
+        tools:layout="@layout/fragment_search_by_people"
+        android:name="com.example.github.ui.fragments.search.SearchByUsernameFragment"
+        android:label="SearchByUsernameFragment" >
+        <argument android:name="search_name" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchByRepositoryNameFragment"
+        tools:layout="@layout/fragment_repositories_by_reponame"
+        android:name="com.example.github.ui.fragments.search.SearchByRepositoryNameFragment"
+        android:label="SearchByRepositoryNameFragment" >
+        <argument android:name="search_name" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        tools:layout="@layout/fragment_search_repositories_by_type"
+        android:name="com.example.github.ui.fragments.search.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_searchByUsernameFragment"
+            app:destination="@id/searchByUsernameFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_searchByRepositoryNameFragment"
+            app:destination="@id/searchByRepositoryNameFragment" />
+    </fragment>
+</navigation>
