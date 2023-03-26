@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.github.R
 import com.example.github.databinding.FragmentHomeMainBinding
 import com.example.github.databinding.FragmentMyWorkBinding
+import com.example.github.ui.fragments.homeContainer.HomeContainerDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.FlowPreview
 
@@ -38,13 +39,13 @@ class HomeFragment : Fragment(R.layout.fragment_my_work) {
 
             repos.setOnClickListener {
                 navController.navigate(
-                    HomeFragmentDirections.actionHomeFragmentToAllRepositoriesFragment()
+                    HomeContainerDirections.actionHomeContainerToAllRepositoriesFragment()
                 )
             }
 
             search.setOnClickListener {
                 navController.navigate(
-                    HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                    HomeContainerDirections.actionHomeContainerToSearchFragment()
                 )
             }
         }

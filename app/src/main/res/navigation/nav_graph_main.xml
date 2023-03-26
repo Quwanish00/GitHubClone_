@@ -16,27 +16,16 @@
         <action
             android:id="@+id/action_mainFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeContainer"
+            app:destination="@id/homeContainer"
+            app:popUpTo="@id/nav_graph_main" />
     </fragment>
     <fragment
         android:id="@+id/enterPriseFragment"
         android:name="com.example.github.ui.fragments.enterprise.EnterPriseFragment"
         android:label="EnterPriseFragment"
         tools:layout="@layout/fragment_enterprise"/>
-    <fragment
-        android:id="@+id/homeFragment"
-        tools:layout="@layout/fragment_home_main"
-        android:name="com.example.github.ui.fragments.home.HomeFragment"
-        android:label="HomeFragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_allRepositoriesFragment"
-            app:destination="@id/allRepositoriesFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_allRepositoriesInProfileFragment"
-            app:destination="@id/allRepositoriesInProfileFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         tools:layout="@layout/fragment_splash"
@@ -49,6 +38,10 @@
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph_main" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeContainer"
+            app:destination="@id/homeContainer"
             app:popUpTo="@id/nav_graph_main" />
     </fragment>
     <fragment
@@ -86,5 +79,20 @@
         <action
             android:id="@+id/action_searchFragment_to_searchByRepositoryNameFragment"
             app:destination="@id/searchByRepositoryNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeContainer"
+        tools:layout="@layout/fragment_home_main"
+        android:name="com.example.github.ui.fragments.homeContainer.HomeContainer"
+        android:label="HomeContainer" >
+        <action
+            android:id="@+id/action_homeContainer_to_allRepositoriesFragment"
+            app:destination="@id/allRepositoriesFragment" />
+        <action
+            android:id="@+id/action_homeContainer_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeContainer_to_allRepositoriesInProfileFragment"
+            app:destination="@id/allRepositoriesInProfileFragment" />
     </fragment>
 </navigation>
