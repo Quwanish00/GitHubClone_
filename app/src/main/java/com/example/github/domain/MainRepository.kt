@@ -30,16 +30,7 @@ class MainRepository(val api:GitHubApi) {
         emit(ResultData.Error(it))
     }
 
-    suspend fun getUserRepositoriesByLanguage() = flow {
-        val response = api.getUserRepositoriesByLanguage("Bearer ${LocalStorage().token}")
-        if (response.isSuccessful) {
-            emit(ResultData.Success(response.body()!!))
-        } else {
-            emit(ResultData.Message(response.message()))
-        }
-    }.catch {
-        emit(ResultData.Error(it))
-    }
+
 
     suspend fun searchUsersByUsername(login: String) = flow {
         val response = api.searchUsersByUsername(login)

@@ -22,6 +22,7 @@ class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentRepositoriesInProfileBinding.bind(view)
+        binding.recyclerview.adapter =adapter
 
         binding.back.setOnClickListener {
             findNavController().popBackStack()
@@ -31,7 +32,7 @@ class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_
 
         binding.apply {
             lifecycleScope.launchWhenResumed {
-                viewModel.getUserRepositoriesByLanguage()
+                viewModel.getUserRepositories()
             }
         }
     }

@@ -2,10 +2,7 @@ package com.example.github.persentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.github.data.models.GetAccessToken
-import com.example.github.data.models.GetUserProfileInfoData
-import com.example.github.data.models.GetUserRepositoriesData
-import com.example.github.data.models.ResultData
+import com.example.github.data.models.*
 import com.example.github.domain.MainRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
@@ -69,20 +66,6 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
             }
         }.launchIn(viewModelScope)
     }
-    suspend fun getUserRepositoriesByLanguage() {
-        repo.getUserRepositories().onEach {
-            when (it) {
-                is ResultData.Success -> {
-                    getUserRepositoriesFlowByLanguage.emit(it.data)
-                }
-                is ResultData.Message -> {
-                    messageFlow.emit(it.message)
-                }
-                is ResultData.Error -> {
-                    errorFlow.emit(it.error)
-                }
-            }
-        }.launchIn(viewModelScope)
-    }
+
 
 }

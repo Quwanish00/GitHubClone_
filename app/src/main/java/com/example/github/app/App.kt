@@ -14,7 +14,7 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this@App
+        instance = this
         startKoin {
           modules( listOf(appModule, viewModelModule))
         }
