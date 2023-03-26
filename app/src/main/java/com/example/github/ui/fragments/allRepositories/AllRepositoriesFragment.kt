@@ -12,17 +12,14 @@ import com.example.github.persentation.UserViewModel
 import com.example.github.ui.adapters.AllRepositoryAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AllRepositoriesFragment :Fragment(R.layout.fragment_repositories) {
     private lateinit var binding: FragmentRepositoriesBinding
     private val adapter = AllRepositoryAdapter()
-    lateinit var  viewModel :UserViewModel
+    private val viewModel by viewModel<UserViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-        ).get(UserViewModel::class.java)
 
         binding = FragmentRepositoriesBinding.bind(view)
 

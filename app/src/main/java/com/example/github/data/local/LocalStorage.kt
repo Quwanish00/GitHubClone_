@@ -12,6 +12,6 @@ class LocalStorage {
     }
 
     var token by StringPreference(pref)
-
+    var code by StringPreference(pref)
     var isReg by BooleanPreference(pref)
 }

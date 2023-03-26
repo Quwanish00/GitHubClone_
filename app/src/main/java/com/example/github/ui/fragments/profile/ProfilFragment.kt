@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfilFragment:Fragment(R.layout.fragment_profile) {
 lateinit var binding: FragmentProfileBinding
-    lateinit var  viewModel : UserViewModel
+    private val viewModel by viewModel<UserViewModel>()
     private lateinit var adapter: RepoByProfilAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,10 +26,6 @@ lateinit var binding: FragmentProfileBinding
 
 binding = FragmentProfileBinding.bind(view)
 
-          viewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-        ).get(UserViewModel::class.java)
 
 
 

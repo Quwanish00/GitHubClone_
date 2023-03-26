@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.github.R
 import com.example.github.databinding.FragmentRepositoriesByReponameBinding
 import com.example.github.persentation.SearchViewModel
+import com.example.github.persentation.UserViewModel
 import com.example.github.ui.adapters.ReposByReposNameAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -19,17 +20,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchByRepositoryNameFragment:Fragment(R.layout.fragment_repositories_by_reponame) {
     private lateinit var binding: FragmentRepositoriesByReponameBinding
     private var adapter = ReposByReposNameAdapter()
-    lateinit var viewModel: SearchViewModel
+    private val viewModel by viewModel<SearchViewModel>()
     private val navArgs: SearchByRepositoryNameFragmentArgs by navArgs()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentRepositoriesByReponameBinding.bind(view)
-
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-        ).get(SearchViewModel::class.java)
 
         binding.apply {
             recyclerview.adapter = adapter

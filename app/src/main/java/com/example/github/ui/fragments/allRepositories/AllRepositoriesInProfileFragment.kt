@@ -12,19 +12,16 @@ import com.example.github.persentation.UserViewModel
 import com.example.github.ui.adapters.RepoProfilByRepoNameAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_in_profile) {
     private lateinit var binding: FragmentRepositoriesInProfileBinding
-    lateinit var viewModel: UserViewModel
+    private val viewModel by viewModel<UserViewModel>()
     private val adapter = RepoProfilByRepoNameAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentRepositoriesInProfileBinding.bind(view)
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-        ).get(UserViewModel::class.java)
 
         binding.back.setOnClickListener {
             findNavController().popBackStack()

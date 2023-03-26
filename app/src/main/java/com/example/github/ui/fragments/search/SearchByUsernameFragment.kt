@@ -19,16 +19,12 @@ class SearchByUsernameFragment:Fragment(R.layout.fragment_search_by_people) {
     private lateinit var binding: FragmentSearchByPeopleBinding
     private val adapter = RepositoryByUsernameAdapter()
     private val navArgs:SearchByUsernameFragmentArgs by navArgs()
-    lateinit var viewModel: SearchViewModel
+    private val viewModel by viewModel<SearchViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentSearchByPeopleBinding.bind(view)
 
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-        ).get(SearchViewModel::class.java)
         binding.apply {
             recycle.adapter = adapter
             back.setOnClickListener {

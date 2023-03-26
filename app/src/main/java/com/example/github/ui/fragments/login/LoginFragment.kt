@@ -42,13 +42,15 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
 
     override fun onResume() {
         super.onResume()
-        val uri: Uri? = requireActivity().intent?.data
+        val intent :Intent? =requireActivity().intent
+        val uri:Uri? =intent?.data
         if (uri != null) {
             val code = uri.getQueryParameter("code")
             if (code != null) {
                 Toast.makeText(requireContext(),"Success login: $code",Toast.LENGTH_SHORT).show()
                 lifecycleScope.launchWhenResumed {
-                    viewModel.getAccessToken(code)
+                    LocalStorage().code =code
+                    viewModel.getAccessToken(LocalStorage().code)
                 }
 
 

@@ -1,21 +1,18 @@
 package com.example.github.persentation
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.github.data.models.GetAccessToken
 import com.example.github.data.models.GetUserProfileInfoData
 import com.example.github.data.models.GetUserRepositoriesData
 import com.example.github.data.models.ResultData
-import com.example.github.data.remote.GitHubApi
-import com.example.github.data.remote.RetrofitHelper
 import com.example.github.domain.MainRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-class UserViewModel(application: Application):AndroidViewModel(application) {
-    val repo = MainRepository(RetrofitHelper.getInstance().create(GitHubApi::class.java))
+class UserViewModel(private val repo:MainRepository):ViewModel() {
+
 
     val getUserProfileInfoFlow = MutableSharedFlow<GetUserProfileInfoData>()
     val getUserRepositoriesFlow = MutableSharedFlow<List<GetUserRepositoriesData>>()
