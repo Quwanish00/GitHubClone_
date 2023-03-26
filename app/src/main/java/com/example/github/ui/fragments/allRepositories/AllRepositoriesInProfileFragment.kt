@@ -31,13 +31,13 @@ class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_
 
         binding.apply {
             lifecycleScope.launchWhenResumed {
-                viewModel.getUserRepositories()
+                viewModel.getUserRepositoriesByLanguage()
             }
         }
     }
 
     private fun initObservers() {
-        viewModel.getUserRepositoriesFlow.onEach {
+        viewModel.getUserRepositoriesFlowByLanguage.onEach {
             adapter.submitList(it)
         }.launchIn(lifecycleScope)
     }

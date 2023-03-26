@@ -3,6 +3,7 @@ package com.example.github.app
 import android.app.Application
 import com.example.github.di.appModule
 import com.example.github.di.viewModelModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class App: Application() {
@@ -13,7 +14,7 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        instance = this@App
         startKoin {
           modules( listOf(appModule, viewModelModule))
         }

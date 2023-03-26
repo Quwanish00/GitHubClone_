@@ -25,6 +25,8 @@
     android:layout_width="match_parent"
     android:layout_height="52dp"
     app:itemIconSize="20dp"
+        app:itemRippleColor="@color/white"
+        app:labelVisibilityMode="selected"
     app:menu="@menu/bottom_menu"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"/>

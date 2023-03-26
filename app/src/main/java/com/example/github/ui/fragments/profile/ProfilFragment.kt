@@ -60,6 +60,7 @@ binding = FragmentProfileBinding.bind(view)
                 follower.text = getString(R.string.follower, it.following)
                 repositoryCount.text = it.public_repos.toString()
             }
+
         }.launchIn(lifecycleScope)
 
         viewModel.getUserRepositoriesFlow.onEach {

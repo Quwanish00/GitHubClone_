@@ -16,6 +16,7 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
 
     val getUserProfileInfoFlow = MutableSharedFlow<GetUserProfileInfoData>()
     val getUserRepositoriesFlow = MutableSharedFlow<List<GetUserRepositoriesData>>()
+    val getUserRepositoriesFlowByLanguage = MutableSharedFlow<List<GetUserRepositoriesData>>()
     val getAccessTokenFlow = MutableSharedFlow<GetAccessToken>()
     val messageFlow = MutableSharedFlow<String>()
     val errorFlow = MutableSharedFlow<Throwable>()
@@ -72,7 +73,7 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
         repo.getUserRepositories().onEach {
             when (it) {
                 is ResultData.Success -> {
-                    getUserRepositoriesFlow.emit(it.data)
+                    getUserRepositoriesFlowByLanguage.emit(it.data)
                 }
                 is ResultData.Message -> {
                     messageFlow.emit(it.message)
@@ -83,4 +84,5 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
             }
         }.launchIn(viewModelScope)
     }
+
 }
