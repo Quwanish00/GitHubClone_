@@ -24,13 +24,20 @@ class SearchFragment :Fragment(R.layout.fragment_search_repositories_by_type){
 
             searchView.addTextChangedListener {
                 val value = searchView.text.toString()
+                if(value.isEmpty()){
+                    linear1.visibility = View.INVISIBLE
+                }
+                else{
+                    empty.visibility = View.INVISIBLE
+                    linear1.visibility = View.VISIBLE
+                    reposs.text = getString(R.string.repositories, value)
+                    peopless.text = getString(R.string.peoples, value)
+                }
 
-                empty.visibility = View.INVISIBLE
 
-                linear1.visibility = View.VISIBLE
 
-                reposs.text = getString(R.string.repositories, value)
-                peopless.text = getString(R.string.peoples, value)
+
+
 
                 peoples.setOnClickListener {
                     findNavController().navigate(

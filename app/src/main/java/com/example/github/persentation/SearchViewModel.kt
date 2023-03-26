@@ -2,6 +2,7 @@ package com.example.github.persentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.github.data.models.GenerateData
 import com.example.github.data.models.GetRepositoriesByNameData
 import com.example.github.data.models.GetSearchUsersByUsername
 import com.example.github.data.models.ResultData

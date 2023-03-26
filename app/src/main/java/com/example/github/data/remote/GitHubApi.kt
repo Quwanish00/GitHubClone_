@@ -13,7 +13,7 @@ interface GitHubApi {
     suspend fun getUserRepositories(@Header("Authorization") token: String): Response<List<GetUserRepositoriesData>>
 
     @GET("{{BASE_URL}}/user/repos") @FormUrlEncoded
-    suspend fun getUserRepositoriesByLanguage(@Header("Authorization") token: String): Response<List<GetUserRepositoriesData>>
+    suspend fun getUserRepositoriesByLanguage(@Header("Authorization") token: String): Response<GenerateData<GetUserRepositoriesData>>
 
     @GET("{{BASE_URL}}/search/users?q=yourtext") @FormUrlEncoded
     suspend fun searchUsersByUsername(@Query("login") login: String): Response<List<GetSearchUsersByUsername>>

@@ -3,6 +3,7 @@ package com.example.github.ui.fragments.login
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -51,6 +52,7 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                 lifecycleScope.launchWhenResumed {
                     LocalStorage().code =code
                     viewModel.getAccessToken(LocalStorage().code)
+                    Log.d("TTTT","Kirdi!")
                 }
 
 
