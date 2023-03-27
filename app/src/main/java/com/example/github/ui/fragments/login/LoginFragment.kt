@@ -43,8 +43,8 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
 
     override fun onResume() {
         super.onResume()
-        val intent :Intent? =requireActivity().intent
-        val uri:Uri? =intent?.data
+
+        val uri:Uri? =requireActivity().intent?.data
         if (uri != null) {
             val code = uri.getQueryParameter("code")
             if (code != null) {
@@ -52,6 +52,7 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                 lifecycleScope.launchWhenResumed {
                     viewModel.getAccessToken(code)
                     Log.d("TTTT","$code!")
+                    Log.d("TTTT", LocalStorage().token)
                 }
                 findNavController().navigate(
                     LoginFragmentDirections.actionMainFragmentToHomeContainer()

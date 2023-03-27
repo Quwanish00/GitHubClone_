@@ -6,20 +6,21 @@ import retrofit2.http.*
 
 interface GitHubApi {
 
-    @GET("{{BASE_URL}}/user") @FormUrlEncoded
+    @GET("/user")
     suspend fun getUserProfileInfo(): Response<GetUserProfileInfoData>
 
-    @GET("{{BASE_URL}}/user/repos") @FormUrlEncoded
+    @GET("/user/repos")
     suspend fun getUserRepositories(): Response<List<GetUserRepositoriesData>>
 
 
-    @GET("{{BASE_URL}}/search/users?q=yourtext") @FormUrlEncoded
+    @GET("/search/users?q")
     suspend fun searchUsersByUsername(@Query("login") login: String): Response<List<GetSearchUsersByUsername>>
 
-    @GET("{{BASE_URL}}/search/repositories?q") @FormUrlEncoded
+    @GET("/search/repositories?q")
     suspend fun searchRepositoriesByRepositoryName(@Query("name") name: String): Response<GenerateData<GetRepositoriesByNameData>>
 
     @Headers("Accept: application/json") @POST("https://github.com/login/oauth/access_token") @FormUrlEncoded
     suspend fun getAccessToken(@Field("client_id") client_id: String, @Field("client_secret") client_secret: String,
      @Field("code") code: String): Response<GetAccessToken>
 }
+//@FormUrlEncoded {{BASE_URL}}
