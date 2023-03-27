@@ -29,14 +29,16 @@ binding = FragmentProfileBinding.bind(view)
 
 
 
-        initData()
-        initObservers()
 
 
         lifecycleScope.launchWhenResumed {
             viewModel.getUserProfileInfo()
             viewModel.getUserRepositories()
         }
+
+        initData()
+        initObservers()
+
 
 
 
