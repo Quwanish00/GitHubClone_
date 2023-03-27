@@ -41,6 +41,8 @@
         android:layout_height="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
             android:id="@+id/repositories"
             android:layout_width="match_parent"
             android:layout_margin="1dp"
@@ -70,6 +72,8 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
             android:id="@+id/peoples"
             android:layout_width="match_parent"
             android:layout_height="0dp"

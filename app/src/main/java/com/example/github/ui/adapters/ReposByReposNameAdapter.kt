@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.github.R
 import com.example.github.data.models.GetRepositoriesByNameData
 import com.example.github.data.models.GetUserRepositoriesData
+import com.example.github.data.models.ItemsRepoData
 import com.example.github.databinding.ItemRepositoryByReponameBinding
 
 
 class ReposByReposNameAdapter:
-ListAdapter<GetRepositoriesByNameData, ReposByReposNameAdapter.RepositoryViewHolder>(diffCallBack)  {
+ListAdapter<ItemsRepoData, ReposByReposNameAdapter.RepositoryViewHolder>(diffCallBack)  {
     inner class RepositoryViewHolder(private val binding: ItemRepositoryByReponameBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
@@ -40,17 +41,17 @@ ListAdapter<GetRepositoriesByNameData, ReposByReposNameAdapter.RepositoryViewHol
         holder.bind()
     }
 
-    private object diffCallBack : DiffUtil.ItemCallback<GetRepositoriesByNameData>() {
+    private object diffCallBack : DiffUtil.ItemCallback<ItemsRepoData>() {
         override fun areItemsTheSame(
-            oldItem: GetRepositoriesByNameData,
-            newItem: GetRepositoriesByNameData
+            oldItem: ItemsRepoData,
+            newItem: ItemsRepoData
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: GetRepositoriesByNameData,
-            newItem: GetRepositoriesByNameData
+            oldItem: ItemsRepoData,
+            newItem: ItemsRepoData
         ): Boolean {
             return oldItem == newItem
         }

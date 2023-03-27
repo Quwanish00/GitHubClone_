@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.github.R
 import com.example.github.data.models.GetSearchUsersByUsername
 import com.example.github.data.models.GetUserRepositoriesData
+import com.example.github.data.models.ItemsRepoData
 import com.example.github.databinding.ItemRepoUsernamAndReponameBinding
 
 class AllRepositoryAdapter: ListAdapter<GetUserRepositoriesData, AllRepositoryAdapter.UsernameViewHolder>(diffCallBack)  {

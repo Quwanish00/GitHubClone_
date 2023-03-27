@@ -84,10 +84,4 @@ data class GetUserRepositoriesData(
     val default_branch: String,
     val permissions: Permissions
 )
-data class Permissions(
-    val admin :Boolean,
-    val maintain:Boolean,
-    val push :Boolean,
-    val triage:Boolean,
-    val pull:Boolean
-)
+

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.github.R
 import com.example.github.data.models.GetUserRepositoriesData
+import com.example.github.data.models.ItemsRepoData
 
 import com.example.github.databinding.ItemRepositoryInProfileBinding
 

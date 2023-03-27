@@ -1,5 +1,6 @@
 package com.example.github.data.remote
 
+import android.provider.SyncStateContract
 import com.example.github.data.models.*
 import retrofit2.Response
 import retrofit2.http.*
@@ -17,7 +18,7 @@ interface GitHubApi {
     suspend fun searchUsersByUsername(@Query("q") login: String): Response<GenerateData<GetSearchUsersByUsername>>
 
     @GET("/search/repositories?q")
-    suspend fun searchRepositoriesByRepositoryName(@Query("q") name: String): Response<GenerateData<GetRepositoriesByNameData>>
+    suspend fun searchRepositoriesByRepositoryName(@Query("q") name: String): Response<GenerateData<ItemsRepoData>>
 
     @Headers("Accept: application/json")
     @POST("https://github.com/login/oauth/access_token")

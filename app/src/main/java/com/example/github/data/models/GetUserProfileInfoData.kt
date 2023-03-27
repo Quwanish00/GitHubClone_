@@ -41,9 +41,3 @@ data class GetUserProfileInfoData(
     val two_factor_authentication: Boolean,
     val plan: Plan
 )
-data class Plan(
-    val name : String,
-    val space:Int,
-    val collaborators:Int,
-    val private_repos:Int
-        )
