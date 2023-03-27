@@ -53,8 +53,7 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                 Toast.makeText(requireContext(),"Success login: $code",Toast.LENGTH_SHORT).show()
                 lifecycleScope.launchWhenResumed {
 
-                    LocalStorage().code =code
-                    viewModel.getAccessToken(LocalStorage().code)
+                    viewModel.getAccessToken(code)
                     Log.d("TTTT","$code!")
                     Log.d("TTTT", LocalStorage().token)
                 }
