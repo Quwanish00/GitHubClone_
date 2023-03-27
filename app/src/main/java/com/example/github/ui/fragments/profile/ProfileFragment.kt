@@ -52,7 +52,7 @@ binding = FragmentProfileBinding.bind(view)
         viewModel.getUserProfileInfoFlow.onEach {
 
             binding.apply {
-                Glide.with(profil)
+                Glide.with(this@ProfileFragment)
                     .load(it.avatar_url)
                     .into(profil)
                 nik.text = it.login

@@ -54,11 +54,10 @@ class SearchByRepositoryNameFragment:Fragment(R.layout.fragment_repositories_by_
     }
     private fun initObservers() {
         viewModel.searchRepositoriesByRepositoryNameFlow.onEach {
-            if (it.isEmpty()) {
-                binding.empty.visibility = View.VISIBLE
-            } else {
+
+
                 adapter.submitList(it)
-            }
+
         }.launchIn(lifecycleScope)
     }
 }

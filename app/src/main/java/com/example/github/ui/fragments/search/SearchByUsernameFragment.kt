@@ -45,11 +45,9 @@ class SearchByUsernameFragment:Fragment(R.layout.fragment_search_by_people) {
 
     fun initObservers() {
         viewModel.searchUsersByUsernameFlow.onEach {
-            if (it.isEmpty()) {
-                binding.empty.visibility = View.VISIBLE
-            } else {
+
                 adapter.submitList(it)
-            }
+
         }.launchIn(lifecycleScope)
     }
 
