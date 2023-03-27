@@ -7,10 +7,10 @@ import retrofit2.http.*
 interface GitHubApi {
 
     @GET("{{BASE_URL}}/user") @FormUrlEncoded
-    suspend fun getUserProfileInfo(@Header("Authorization") token: String): Response<GetUserProfileInfoData>
+    suspend fun getUserProfileInfo(): Response<GetUserProfileInfoData>
 
     @GET("{{BASE_URL}}/user/repos") @FormUrlEncoded
-    suspend fun getUserRepositories(@Header("Authorization") token: String): Response<List<GetUserRepositoriesData>>
+    suspend fun getUserRepositories(): Response<List<GetUserRepositoriesData>>
 
 
     @GET("{{BASE_URL}}/search/users?q=yourtext") @FormUrlEncoded

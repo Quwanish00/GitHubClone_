@@ -1,6 +1,7 @@
 package com.example.github.ui.fragments.allRepositories
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,24 +24,29 @@ class AllRepositoriesFragment :Fragment(R.layout.fragment_repositories) {
 
         binding = FragmentRepositoriesBinding.bind(view)
 
-        binding.recycler.adapter = adapter
 
-        binding.back.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
-        initObservers()
 
         binding.apply {
             lifecycleScope.launchWhenResumed {
                 viewModel.getUserRepositories()
             }
         }
+        binding.recycler.adapter = adapter
+        initObservers()
+        binding.back.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+
+
+
     }
 
     private fun initObservers() {
         viewModel.getUserRepositoriesFlow.onEach {
             adapter.submitList(it)
+
+            Log.d("Repolar","$it")
         }.launchIn(lifecycleScope)
     }
     }

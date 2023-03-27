@@ -25,6 +25,10 @@ class SearchByUsernameFragment:Fragment(R.layout.fragment_search_by_people) {
 
         binding = FragmentSearchByPeopleBinding.bind(view)
 
+        lifecycleScope.launchWhenResumed {
+            viewModel.searchUsersByUsername(navArgs.searchName)
+        }
+
         binding.apply {
             recycle.adapter = adapter
             back.setOnClickListener {
@@ -34,9 +38,7 @@ class SearchByUsernameFragment:Fragment(R.layout.fragment_search_by_people) {
 
         initObservers()
 
-        lifecycleScope.launchWhenResumed {
-            viewModel.searchUsersByUsername(navArgs.searchName)
-        }
+
 
 
     }

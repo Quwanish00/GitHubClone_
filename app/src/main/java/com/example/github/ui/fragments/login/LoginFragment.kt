@@ -51,7 +51,7 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                 Toast.makeText(requireContext(),"Success login: $code",Toast.LENGTH_SHORT).show()
                 lifecycleScope.launchWhenResumed {
                     viewModel.getAccessToken(code)
-                    Log.d("TTTT","Kirdi!")
+                    Log.d("TTTT","$code!")
                 }
                 findNavController().navigate(
                     LoginFragmentDirections.actionMainFragmentToHomeContainer()

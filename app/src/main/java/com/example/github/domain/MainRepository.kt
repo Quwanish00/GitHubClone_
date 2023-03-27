@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 
 class MainRepository(val api:GitHubApi) {
     suspend fun getUserProfileInfo() = flow {
-        val response = api.getUserProfileInfo("Bearer ${LocalStorage().token}")
+        val response = api.getUserProfileInfo()
         if (response.isSuccessful) {
             emit(ResultData.Success(response.body()!!))
         } else {
@@ -20,7 +20,7 @@ class MainRepository(val api:GitHubApi) {
     }
 
     suspend fun getUserRepositories() = flow {
-        val response = api.getUserRepositories("Bearer ${LocalStorage().token}")
+        val response = api.getUserRepositories()
         if (response.isSuccessful) {
             emit(ResultData.Success(response.body()!!))
         } else {
