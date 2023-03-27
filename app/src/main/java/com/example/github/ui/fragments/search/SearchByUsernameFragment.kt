@@ -24,19 +24,22 @@ class SearchByUsernameFragment:Fragment(R.layout.fragment_search_by_people) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentSearchByPeopleBinding.bind(view)
-
-        lifecycleScope.launchWhenResumed {
-            viewModel.searchUsersByUsername(navArgs.searchName)
-        }
-
         binding.apply {
             recycle.adapter = adapter
             back.setOnClickListener {
                 findNavController().popBackStack()
             }
         }
-
         initObservers()
+
+        lifecycleScope.launchWhenResumed {
+            viewModel.searchUsersByUsername(navArgs.searchName)
+        }
+
+
+
+
+
 
 
 

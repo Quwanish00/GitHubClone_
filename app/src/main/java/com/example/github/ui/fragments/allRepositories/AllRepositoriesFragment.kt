@@ -23,19 +23,19 @@ class AllRepositoriesFragment :Fragment(R.layout.fragment_repositories) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentRepositoriesBinding.bind(view)
+        binding.recycler.adapter = adapter
 
-
+        binding.back.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        initObservers()
 
         binding.apply {
             lifecycleScope.launchWhenResumed {
                 viewModel.getUserRepositories()
             }
         }
-        binding.recycler.adapter = adapter
-        initObservers()
-        binding.back.setOnClickListener {
-            findNavController().popBackStack()
-        }
+
 
 
 

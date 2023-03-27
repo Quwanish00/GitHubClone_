@@ -35,7 +35,7 @@ class MainRepository(val api:GitHubApi) {
     suspend fun searchUsersByUsername(login: String) = flow {
         val response = api.searchUsersByUsername(login)
         if (response.isSuccessful) {
-            emit(ResultData.Success(response.body()!!))
+            emit(ResultData.Success(response.body()!!.items))
         } else {
             emit(ResultData.Message(response.message()))
         }

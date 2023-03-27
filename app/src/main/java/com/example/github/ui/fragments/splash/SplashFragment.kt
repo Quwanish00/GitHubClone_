@@ -23,7 +23,7 @@ class SplashFragment:Fragment(R.layout.fragment_splash) {
             lifecycleScope.launchWhenResumed {
                 delay(200)
                 findNavController().navigate(
-                    SplashFragmentDirections.actionSplashFragmentToHomeFragment()
+                    SplashFragmentDirections.actionSplashFragmentToHomeContainer()
                 )
             }
         } else {

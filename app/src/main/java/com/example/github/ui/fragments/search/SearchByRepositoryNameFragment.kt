@@ -26,17 +26,20 @@ class SearchByRepositoryNameFragment:Fragment(R.layout.fragment_repositories_by_
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentRepositoriesByReponameBinding.bind(view)
-
-        lifecycleScope.launchWhenResumed {
-            viewModel.searchRepositoriesByRepositoryName(navArgs.searchName)
-        }
-
         binding.apply {
             recyclerview.adapter = adapter
 
             back.setOnClickListener {
                 findNavController().popBackStack()
             }
+            initObservers()
+
+        lifecycleScope.launchWhenResumed {
+            viewModel.searchRepositoriesByRepositoryName(navArgs.searchName)
+        }
+
+
+
 
             recyclerview.addItemDecoration(
                 DividerItemDecoration(
@@ -45,7 +48,7 @@ class SearchByRepositoryNameFragment:Fragment(R.layout.fragment_repositories_by_
             )
 
 
-            initObservers()
+
 
 
 

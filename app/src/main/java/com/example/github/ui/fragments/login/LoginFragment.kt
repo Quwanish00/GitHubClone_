@@ -26,6 +26,8 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMainBinding.bind(view)
+
+      
         initListeners()
     }
     private fun initListeners() {
@@ -56,12 +58,14 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                     Log.d("TTTT","$code!")
                     Log.d("TTTT", LocalStorage().token)
                 }
-                if(isSucces()){
-                    findNavController().navigate(
-                        LoginFragmentDirections.actionMainFragmentToHomeContainer()
-                    )
+                    if(isSucces()){
+                        findNavController().navigate(
+                            LoginFragmentDirections.actionMainFragmentToHomeContainer()
+                        )
+                    }
 
-                }
+
+
 
 
             } else if ((uri.getQueryParameter("error")) != null) {

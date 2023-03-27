@@ -21,7 +21,7 @@
         android:text="Profile"
         android:textSize="23dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+
         android:layout_marginStart="12dp"/>
 
     <androidx.core.widget.NestedScrollView
@@ -61,6 +61,7 @@
                 android:layout_height="32dp"
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="@id/profil"
+
                 app:layout_constraintStart_toStartOf="@id/profil"
                 android:src="@drawable/ic_person"/>
 

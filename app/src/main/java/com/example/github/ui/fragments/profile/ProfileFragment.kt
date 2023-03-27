@@ -14,29 +14,22 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileFragment:Fragment(R.layout.fragment_profile) {
-lateinit var binding: FragmentProfileBinding
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
+    lateinit var binding: FragmentProfileBinding
     private val viewModel by viewModel<UserViewModel>()
     private lateinit var adapter: RepoByProfilAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-binding = FragmentProfileBinding.bind(view)
+        binding = FragmentProfileBinding.bind(view)
 
-
-
-
-
-
+        initData()
+        initObserver()
         lifecycleScope.launchWhenResumed {
             viewModel.getUserProfileInfo()
             viewModel.getUserRepositories()
         }
-
-        initData()
-        initObservers()
-
 
 
 
@@ -47,12 +40,11 @@ binding = FragmentProfileBinding.bind(view)
         binding.recyclerview.adapter = adapter
     }
 
-    @SuppressLint("StringFormatMatches")
-    fun initObservers() {
+    fun initObserver() {
         viewModel.getUserProfileInfoFlow.onEach {
 
             binding.apply {
-                Glide.with(this@ProfileFragment)
+                Glide.with(profil)
                     .load(it.avatar_url)
                     .into(profil)
                 nik.text = it.login

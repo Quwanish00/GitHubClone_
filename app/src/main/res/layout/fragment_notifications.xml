@@ -22,7 +22,7 @@
         android:text="Notifications"
         android:textSize="23dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+
         android:layout_marginStart="12dp"/>
 
     <com.google.android.material.card.MaterialCardView
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
-        android:backgroundTint="#31000000"
+
         android:layout_marginStart="12dp"
         app:cardCornerRadius="24dp"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 android:textSize="15dp"
                 android:text=" Inbox "
                 android:layout_marginHorizontal="2dp"
-                android:textColor="@color/black"/>
+      />
 
             <ImageView
                 android:id="@+id/tomenge"
@@ -77,7 +77,7 @@
         app:layout_constraintStart_toEndOf="@id/card1"
         android:layout_width="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:backgroundTint="#31000000"
+
         app:cardCornerRadius="24dp"
         android:layout_height="wrap_content"
 
@@ -102,7 +102,7 @@
                 android:textSize="15dp"
                 android:text=" Unread "
                 android:layout_marginHorizontal="2dp"
-                android:textColor="@color/black"/>
+       />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,7 +115,7 @@
         app:layout_constraintStart_toEndOf="@id/card2"
         android:layout_width="wrap_content"
         android:layout_marginStart="12dp"
-        android:backgroundTint="#31000000"
+
         app:cardCornerRadius="24dp"
         android:layout_height="wrap_content"
 
@@ -139,7 +139,7 @@
                 android:textSize="15dp"
                 android:text=" Repositoriy "
                 android:layout_marginHorizontal="2dp"
-                android:textColor="@color/black"/>
+               />
 
             <ImageView
                 android:id="@+id/tomenge_1"

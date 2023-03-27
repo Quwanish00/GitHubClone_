@@ -10,7 +10,7 @@
         android:layout_height="72dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#14000000"/>
+        android:background="#0C000000"/>
 
     <ImageView
         android:id="@+id/back"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:textSize="28dp"
         android:text="Repositories"
-        android:textColor="@color/black"/>
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

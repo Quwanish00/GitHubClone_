@@ -23,7 +23,6 @@
         android:layout_marginStart="12dp"
         app:layout_constraintTop_toTopOf="@id/profil"
         app:layout_constraintBottom_toBottomOf="@id/profil"
-        android:textColor="@color/black"
         android:text="Github Accaunt"/>
 
 

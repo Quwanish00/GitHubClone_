@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:textColor="#BF000000"/>
+        />
     <ImageView
         android:id="@+id/star"
         android:layout_marginBottom="6dp"
@@ -50,7 +50,6 @@
         android:id="@+id/star_count"
         app:layout_constraintStart_toEndOf="@id/star"
         app:layout_constraintTop_toTopOf="@id/star"
-        android:textColor="@color/black"
 
         android:text="0"
         app:layout_constraintBottom_toBottomOf="@id/star"
@@ -74,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kotlin"
-        android:textColor="@color/black"
+
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/language_icon"
         app:layout_constraintStart_toEndOf="@id/language_icon"

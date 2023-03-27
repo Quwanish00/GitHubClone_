@@ -23,18 +23,20 @@ class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_
 
         binding = FragmentRepositoriesInProfileBinding.bind(view)
         binding.recyclerview.adapter =adapter
-
+        initObservers()
         binding.apply {
             lifecycleScope.launchWhenResumed {
                 viewModel.getUserRepositories()
             }
+
         }
+
 
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
 
-        initObservers()
+
 
 
     }
