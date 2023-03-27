@@ -13,7 +13,7 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
 
     val getUserProfileInfoFlow = MutableSharedFlow<GetUserProfileInfoData>()
     val getUserRepositoriesFlow = MutableSharedFlow<List<GetUserRepositoriesData>>()
-    val getUserRepositoriesFlowByLanguage = MutableSharedFlow<List<GetUserRepositoriesData>>()
+
     val getAccessTokenFlow = MutableSharedFlow<GetAccessToken>()
     val messageFlow = MutableSharedFlow<String>()
     val errorFlow = MutableSharedFlow<Throwable>()

@@ -56,9 +56,12 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                     Log.d("TTTT","$code!")
                     Log.d("TTTT", LocalStorage().token)
                 }
-                findNavController().navigate(
-                    LoginFragmentDirections.actionMainFragmentToHomeContainer()
-                )
+                if(isSucces()){
+                    findNavController().navigate(
+                        LoginFragmentDirections.actionMainFragmentToHomeContainer()
+                    )
+
+                }
 
 
             } else if ((uri.getQueryParameter("error")) != null) {
@@ -73,10 +76,15 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
         viewModel.getAccessTokenFlow.onEach {
             LocalStorage().isReg = true
             LocalStorage().token = it.token
+            isSucces()
         }.launchIn(lifecycleScope)
 
         viewModel.messageFlow.onEach {
             toast("Token kelmedi!")
         }
+    }
+    private fun isSucces():Boolean{
+
+        return false
     }
 }
