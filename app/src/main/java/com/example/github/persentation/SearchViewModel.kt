@@ -13,7 +13,7 @@ class SearchViewModel(private val repo:MainRepository):ViewModel() {
 
     val searchUsersByUsernameFlow = MutableSharedFlow<List<GetSearchUsersByUsername>>()
     val searchRepositoriesByRepositoryNameFlow =
-        MutableSharedFlow<List<ItemsRepoData>>()
+        MutableSharedFlow<List<GetRepositoriesByNameData>>()
     val messageFlow = MutableSharedFlow<String>()
     val errorFlow = MutableSharedFlow<Throwable>()
 

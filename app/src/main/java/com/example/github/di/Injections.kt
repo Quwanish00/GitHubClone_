@@ -7,6 +7,7 @@ import com.example.github.persentation.SearchViewModel
 import com.example.github.persentation.UserViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -37,14 +38,17 @@ val appModule = module {
     single<GitHubApi> {
         provideApi(retrofit = get())
     }
+    single<GitHubInterceptor> {
+        GitHubInterceptor()
+    }
 }
 
 val viewModelModule = module {
-    single<UserViewModel> {
+    viewModel<UserViewModel> {
         UserViewModel(repo = get())
     }
 
-    single<SearchViewModel> {
+    viewModel<SearchViewModel> {
         SearchViewModel(repo = get())
     }
 }

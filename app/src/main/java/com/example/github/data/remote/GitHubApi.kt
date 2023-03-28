@@ -18,7 +18,7 @@ interface GitHubApi {
     suspend fun searchUsersByUsername(@Query("q") login: String): Response<GenerateData<GetSearchUsersByUsername>>
 
     @GET("/search/repositories?q")
-    suspend fun searchRepositoriesByRepositoryName(@Query("q") name: String): Response<GenerateData<ItemsRepoData>>
+    suspend fun searchRepositoriesByRepositoryName(@Query("q") name: String): Response<GenerateData<GetRepositoriesByNameData>>
 
     @Headers("Accept: application/json")
     @POST("https://github.com/login/oauth/access_token")

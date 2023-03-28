@@ -13,7 +13,7 @@ import com.example.github.databinding.ItemRepositoryByReponameBinding
 
 
 class ReposByReposNameAdapter:
-ListAdapter<ItemsRepoData, ReposByReposNameAdapter.RepositoryViewHolder>(diffCallBack)  {
+ListAdapter<GetRepositoriesByNameData, ReposByReposNameAdapter.RepositoryViewHolder>(diffCallBack)  {
     inner class RepositoryViewHolder(private val binding: ItemRepositoryByReponameBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
@@ -41,17 +41,17 @@ ListAdapter<ItemsRepoData, ReposByReposNameAdapter.RepositoryViewHolder>(diffCal
         holder.bind()
     }
 
-    private object diffCallBack : DiffUtil.ItemCallback<ItemsRepoData>() {
+    private object diffCallBack : DiffUtil.ItemCallback<GetRepositoriesByNameData>() {
         override fun areItemsTheSame(
-            oldItem: ItemsRepoData,
-            newItem: ItemsRepoData
+            oldItem: GetRepositoriesByNameData,
+            newItem: GetRepositoriesByNameData
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: ItemsRepoData,
-            newItem: ItemsRepoData
+            oldItem: GetRepositoriesByNameData,
+            newItem: GetRepositoriesByNameData
         ): Boolean {
             return oldItem == newItem
         }
