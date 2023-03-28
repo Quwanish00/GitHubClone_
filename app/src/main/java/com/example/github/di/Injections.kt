@@ -1,7 +1,6 @@
 package com.example.github.di
 
 import com.example.github.data.remote.GitHubApi
-import com.example.github.data.remote.GitHubInterceptor
 import com.example.github.domain.MainRepository
 import com.example.github.persentation.SearchViewModel
 import com.example.github.persentation.UserViewModel
@@ -23,11 +22,9 @@ val appModule = module {
             HttpLoggingInterceptor.Level.BODY
         )
 
-        val interceptor = GitHubInterceptor()
 
         val client = OkHttpClient.Builder()
             .addInterceptor(httpLogginInterceptor)
-            .addInterceptor(interceptor)
             .build()
 
         val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
@@ -38,9 +35,7 @@ val appModule = module {
     single<GitHubApi> {
         provideApi(retrofit = get())
     }
-    single<GitHubInterceptor> {
-        GitHubInterceptor()
-    }
+
 }
 
 val viewModelModule = module {

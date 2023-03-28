@@ -1,6 +1,7 @@
 package com.example.github.data.remote
 
 import android.provider.SyncStateContract
+import com.example.github.data.local.LocalStorage
 import com.example.github.data.models.*
 import retrofit2.Response
 import retrofit2.http.*
@@ -8,10 +9,10 @@ import retrofit2.http.*
 interface GitHubApi {
 
     @GET("/user")
-    suspend fun getUserProfileInfo(): Response<GetUserProfileInfoData>
+    suspend fun getUserProfileInfo(@Header("Authorization") token: String): Response<GetUserProfileInfoData>
 
     @GET("/user/repos")
-    suspend fun getUserRepositories(): Response<List<GetUserRepositoriesData>>
+    suspend fun getUserRepositories(@Header("Authorization")  token: String ): Response<List<GetUserRepositoriesData>>
 
 
     @GET("/search/users?q")

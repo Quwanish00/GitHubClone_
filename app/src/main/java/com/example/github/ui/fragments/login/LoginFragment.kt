@@ -59,11 +59,12 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                 }
                 if(isSucces()){
                     Toast.makeText(requireContext(), LocalStorage().token,Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(
+                        LoginFragmentDirections.actionMainFragmentToHomeContainer()
+                    )
+
                 }
 
-                        findNavController().navigate(
-                            LoginFragmentDirections.actionMainFragmentToHomeContainer()
-                        )
 
 
 
