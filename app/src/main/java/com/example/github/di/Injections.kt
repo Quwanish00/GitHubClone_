@@ -17,7 +17,7 @@ val appModule = module {
         MainRepository(api = get())
     }
 
-    single<Retrofit> {
+    fun retrofit(): Retrofit {
         val httpLogginInterceptor = HttpLoggingInterceptor().setLevel(
             HttpLoggingInterceptor.Level.BODY
         )
@@ -29,7 +29,10 @@ val appModule = module {
 
         val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.github.com").client(client).build()
-        retrofit
+       return retrofit
+    }
+    single {
+        retrofit()
     }
 
     single<GitHubApi> {

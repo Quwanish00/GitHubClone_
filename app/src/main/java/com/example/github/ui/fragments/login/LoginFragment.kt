@@ -28,6 +28,8 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
         binding = FragmentMainBinding.bind(view)
 
       
+
+        initObservers()
         initListeners()
     }
     private fun initListeners() {
@@ -50,30 +52,18 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
         if (uri != null) {
             val code = uri.getQueryParameter("code")
             if (code != null) {
-                Toast.makeText(requireContext(),"Success login: $code",Toast.LENGTH_SHORT).show()
+
                 lifecycleScope.launchWhenResumed {
 
                     viewModel.getAccessToken(code)
-                    Log.d("TTTT","$code!")
                     Log.d("TTTT", LocalStorage().token)
                 }
-                if(isSucces()){
-                    Toast.makeText(requireContext(), LocalStorage().token,Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(
-                        LoginFragmentDirections.actionMainFragmentToHomeContainer()
-                    )
-
-                }
-
-
-
-
 
 
             } else if ((uri.getQueryParameter("error")) != null) {
                 toast("Something went wrong!")
             }
-            initObservers()
+
         }
 
     }
@@ -82,15 +72,17 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
         viewModel.getAccessTokenFlow.onEach {
             LocalStorage().isReg = true
             LocalStorage().token = it.access_token
-            isSucces()
+
+            if(LocalStorage().token!=""){
+                findNavController().navigate(LoginFragmentDirections.actionMainFragmentToHomeContainer())
+            }
+
+
         }.launchIn(lifecycleScope)
 
         viewModel.messageFlow.onEach {
             toast("Token kelmedi!")
         }
     }
-    private fun isSucces():Boolean{
 
-        return false
-    }
 }

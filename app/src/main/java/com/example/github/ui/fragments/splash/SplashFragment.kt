@@ -19,7 +19,7 @@ class SplashFragment:Fragment(R.layout.fragment_splash) {
         binding = FragmentSplashBinding.bind(view)
 
 
-        if (LocalStorage().isReg) {
+        if (LocalStorage().isReg && LocalStorage().token.isNotEmpty()) {
             lifecycleScope.launchWhenResumed {
                 delay(200)
                 findNavController().navigate(

@@ -12,7 +12,7 @@ class MainRepository(val api:GitHubApi) {
     suspend fun getUserProfileInfo() = flow {
 
         val token = LocalStorage().token
-        val response = api.getUserProfileInfo("Bearer:$token")
+        val response = api.getUserProfileInfo("Bearer $token")
         if (response.isSuccessful) {
             emit(ResultData.Success(response.body()!!))
         } else {
@@ -24,7 +24,7 @@ class MainRepository(val api:GitHubApi) {
 
     suspend fun getUserRepositories() = flow {
         val token = LocalStorage().token
-        val response = api.getUserRepositories("Bearer:$token")
+        val response = api.getUserRepositories("Bearer $token")
         if (response.isSuccessful) {
             emit(ResultData.Success(response.body()!!))
         } else {
