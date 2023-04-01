@@ -8,10 +8,10 @@ import retrofit2.http.*
 
 interface GitHubApi {
 
-    @GET("/user") @FormUrlEncoded
+    @GET("/user")
     suspend fun getUserProfileInfo(@Header("Authorization") token: String): Response<GetUserProfileInfoData>
 
-    @GET("/user/repos") @FormUrlEncoded
+    @GET("/user/repos")
     suspend fun getUserRepositories(@Header("Authorization")  token: String ): Response<List<GetUserRepositoriesData>>
 
 
