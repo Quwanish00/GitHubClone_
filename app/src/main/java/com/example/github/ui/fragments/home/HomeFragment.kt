@@ -39,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_my_work) {
 
             repos.setOnClickListener {
                 navController.navigate(
-                    HomeContainerDirections.actionHomeContainerToAllRepositoriesFragment()
+                   HomeFragmentDirections.actionHomeFragmentToAllRepositoriesFragment()
                 )
             }
 

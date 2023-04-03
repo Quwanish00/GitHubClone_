@@ -32,7 +32,7 @@ ListAdapter<GetRepositoriesByNameData, ReposByReposNameAdapter.RepositoryViewHol
             ItemRepositoryByReponameBinding.bind(
                 LayoutInflater.from(
                     parent.context
-                ).inflate(R.layout.item_search_by_username, parent, false)
+                ).inflate(R.layout.item_repository_by_reponame, parent, false)
             )
         )
     }

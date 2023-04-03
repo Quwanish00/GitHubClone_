@@ -45,16 +45,6 @@
             app:popUpTo="@id/nav_graph_main" />
     </fragment>
     <fragment
-        android:id="@+id/allRepositoriesFragment"
-        tools:layout="@layout/fragment_repositories"
-        android:name="com.example.github.ui.fragments.allRepositories.AllRepositoriesFragment"
-        android:label="AllRepositoriesFragment" />
-    <fragment
-        android:id="@+id/allRepositoriesInProfileFragment"
-        tools:layout="@layout/fragment_repositories_in_profile"
-        android:name="com.example.github.ui.fragments.allRepositories.AllRepositoriesInProfileFragment"
-        android:label="AllRepositoriesInProfileFragment" />
-    <fragment
         android:id="@+id/searchByUsernameFragment"
         tools:layout="@layout/fragment_search_by_people"
         android:name="com.example.github.ui.fragments.search.SearchByUsernameFragment"
@@ -91,8 +81,5 @@
         <action
             android:id="@+id/action_homeContainer_to_searchFragment"
             app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_homeContainer_to_allRepositoriesInProfileFragment"
-            app:destination="@id/allRepositoriesInProfileFragment" />
     </fragment>
 </navigation>

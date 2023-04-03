@@ -33,11 +33,12 @@ class SearchByRepositoryNameFragment:Fragment(R.layout.fragment_repositories_by_
             back.setOnClickListener {
                 findNavController().popBackStack()
             }
-            initObservers()
 
         lifecycleScope.launchWhenResumed {
             viewModel.searchRepositoriesByRepositoryName(navArgs.searchName)
         }
+            initObservers()
+
 
 
 

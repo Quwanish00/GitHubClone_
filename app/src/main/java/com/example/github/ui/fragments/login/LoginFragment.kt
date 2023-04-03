@@ -56,8 +56,7 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
                 lifecycleScope.launchWhenResumed {
 
                     viewModel.getAccessToken(code)
-                    Log.d("TTTT", LocalStorage().token)
-                    Log.d("TTTT", code)
+
 
                 }
 
@@ -74,11 +73,8 @@ class LoginFragment : Fragment(R.layout.fragment_main) {
         viewModel.getAccessTokenFlow.onEach {
             LocalStorage().isReg = true
             LocalStorage().token = it.access_token
-
-
-
                 findNavController().navigate(LoginFragmentDirections.actionMainFragmentToHomeContainer())
-
+            Log.d("TTTT", LocalStorage().token)
 
 
         }.launchIn(lifecycleScope)

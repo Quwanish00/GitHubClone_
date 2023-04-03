@@ -30,11 +30,12 @@ class SearchByUsernameFragment:Fragment(R.layout.fragment_search_by_people) {
                 findNavController().popBackStack()
             }
         }
-        initObservers()
+
 
         lifecycleScope.launchWhenResumed {
             viewModel.searchUsersByUsername(navArgs.searchName)
         }
+        initObservers()
 
 
 

@@ -82,6 +82,7 @@ data class GetUserRepositoriesData(
     val open_issues: Int,
     val watchers: Int,
     val default_branch: String,
-    val permissions: Permissions
+    val permissions: Permissions,
+    val score:Double
 )
 

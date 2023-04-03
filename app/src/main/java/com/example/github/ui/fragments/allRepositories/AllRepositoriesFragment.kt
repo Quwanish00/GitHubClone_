@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.github.R
@@ -28,12 +27,13 @@ class AllRepositoriesFragment :Fragment(R.layout.fragment_repositories) {
         binding.back.setOnClickListener {
             findNavController().popBackStack()
         }
-        initObservers()
+
 
         binding.apply {
             lifecycleScope.launchWhenResumed {
                 viewModel.getUserRepositories()
             }
+            initObservers()
         }
 
 

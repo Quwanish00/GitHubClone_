@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.github.R
 import com.example.github.databinding.FragmentProfileBinding
 import com.example.github.persentation.UserViewModel
 import com.example.github.ui.adapters.RepoByProfilAdapter
+import com.example.github.ui.fragments.homeContainer.HomeContainerDirections
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,14 +27,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.bind(view)
 
         initData()
-        initObserver()
+
         lifecycleScope.launchWhenResumed {
             viewModel.getUserProfileInfo()
-            viewModel.getUserRepositories()
+            viewModel.getUserRepositoriespInProfile()
         }
+        initObserver()
 
-
-
+binding.repositoriesProfil.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToAllRepositoriesInProfileFragment())
+}
     }
 
     private fun initData() {
@@ -44,18 +48,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewModel.getUserProfileInfoFlow.onEach {
 
             binding.apply {
-                Glide.with(profil)
+                Glide.with(this@ProfileFragment)
                     .load(it.avatar_url)
                     .into(profil)
                 nik.text = it.login
-                followers.text = getString(R.string.followers, it.followers)
-                follower.text = getString(R.string.follower, it.following)
+                followers.text = it.followers.toString()
+                follower.text = it.following.toString()
                 repositoryCount.text = it.public_repos.toString()
             }
 
         }.launchIn(lifecycleScope)
 
-        viewModel.getUserRepositoriesFlow.onEach {
+        viewModel.getUserRepositoriesInProfileFlow.onEach {
             adapter.submitList(it)
         }.launchIn(lifecycleScope)
     }

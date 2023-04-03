@@ -23,11 +23,12 @@ class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_
 
         binding = FragmentRepositoriesInProfileBinding.bind(view)
         binding.recyclerview.adapter =adapter
-        initObservers()
+
         binding.apply {
             lifecycleScope.launchWhenResumed {
-                viewModel.getUserRepositories()
+                viewModel.getUserRepositoriespProfile()
             }
+            initObservers()
 
         }
 
@@ -42,7 +43,7 @@ class AllRepositoriesInProfileFragment :Fragment(R.layout.fragment_repositories_
     }
 
     private fun initObservers() {
-        viewModel.getUserRepositoriesFlow.onEach {
+        viewModel.getUserRepositoriesProfileFlow.onEach {
             adapter.submitList(it)
         }.launchIn(lifecycleScope)
     }

@@ -46,7 +46,7 @@ val viewModelModule = module {
         UserViewModel(repo = get())
     }
 
-    viewModel<SearchViewModel> {
+    viewModel <SearchViewModel> {
         SearchViewModel(repo = get())
     }
 }

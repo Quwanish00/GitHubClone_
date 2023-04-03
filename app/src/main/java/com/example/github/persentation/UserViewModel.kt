@@ -13,6 +13,8 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
 
     val getUserProfileInfoFlow = MutableSharedFlow<GetUserProfileInfoData>()
     val getUserRepositoriesFlow = MutableSharedFlow<List<GetUserRepositoriesData>>()
+    val getUserRepositoriesInProfileFlow = MutableSharedFlow<List<GetUserRepositoriesData>>()
+    val getUserRepositoriesProfileFlow = MutableSharedFlow<List<GetUserRepositoriesData>>()
 
     val getAccessTokenFlow = MutableSharedFlow<GetAccessToken>()
     val messageFlow = MutableSharedFlow<String>()
@@ -40,6 +42,36 @@ class UserViewModel(private val repo:MainRepository):ViewModel() {
             when (it) {
                 is ResultData.Success -> {
                     getUserRepositoriesFlow.emit(it.data)
+                }
+                is ResultData.Message -> {
+                    messageFlow.emit(it.message)
+                }
+                is ResultData.Error -> {
+                    errorFlow.emit(it.error)
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+    suspend fun getUserRepositoriespProfile() {
+        repo.getUserRepositories().onEach {
+            when (it) {
+                is ResultData.Success -> {
+                    getUserRepositoriesProfileFlow.emit(it.data)
+                }
+                is ResultData.Message -> {
+                    messageFlow.emit(it.message)
+                }
+                is ResultData.Error -> {
+                    errorFlow.emit(it.error)
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+    suspend fun getUserRepositoriespInProfile() {
+        repo.getUserRepositories().onEach {
+            when (it) {
+                is ResultData.Success -> {
+                    getUserRepositoriesInProfileFlow.emit(it.data)
                 }
                 is ResultData.Message -> {
                     messageFlow.emit(it.message)
